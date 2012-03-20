@@ -2,7 +2,7 @@
   "Support for building deployment artifacts for a project."
   (:use [cljs.closure :only (build)]
         [one.host-page :only (application-host)]
-        [one.config :only (cljs-build-opts production-js)]
+        [one.config :only [cljs-build-opts production-js externs]]
         [cljs.repl :only (repl)]
         [cljs.repl.browser :only (repl-env)])
   (:require [clojure.java.io :as io]))
@@ -13,7 +13,8 @@
   [config]
   (build (:app-root config) (assoc (cljs-build-opts config)
                               :optimizations :advanced
-                              :output-to (str "out/" (production-js config))))
+                              :output-to (str "out/" (production-js config))
+                              :externs (externs config)))
   (spit "out/public/index.html" (application-host config :production)))
 
 (defn cljs-repl

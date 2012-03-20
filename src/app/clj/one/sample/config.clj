@@ -14,6 +14,8 @@
           :js "public/javascripts"
           :dev-js-file-name "main.js"
           :prod-js-file-name "mainp.js"
+          :externs-root "externs"
+          :externs ["browserid.js"]
           :dev-js ["goog.require('one.sample.core');"
                    "goog.require('one.sample.model');"
                    "goog.require('one.sample.controller');"

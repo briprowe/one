@@ -15,3 +15,9 @@
   Javascript file."
   [config]
   (str (:js config) "/" (:prod-js-file-name config)))
+
+(defn externs
+  [config]
+  (let [root (:externs-root config)]
+    (for [file (:externs config)]
+      (str root "/" file))))
